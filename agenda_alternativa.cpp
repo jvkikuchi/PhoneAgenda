@@ -13,9 +13,57 @@ class Agenda {
         Agenda() {
             carregarContatos();
         }
-
+        
         void armazenarContato(Contato contato) {
             agenda.push_back(contato);
+        }
+
+        void buscarContato(string regex) {
+            if (regex.length() < 3) {
+                cout << "O termo de busca deve conter pelo menos 3 caracteres." << endl;
+                return;
+            }
+            bool found = false;
+            for(auto contato : agenda) {
+                if (toLowerCase(contato.getPessoa().getNome()).find(toLowerCase(regex)) != string::npos) {
+                    print(contato);
+                    found = true;
+                }
+            }
+            if (!found) {
+                cout << "Nenhum registro encontrado." << endl;
+            }
+        }
+
+        void editarContato(string regex) {
+            bool found = false;
+            for(auto &contato : agenda) {
+                if (toLowerCase(contato.getWhatsapp()).find(toLowerCase(regex)) != string::npos) {
+                    print(contato);
+                    found = true;
+                    pessoa.setNome(informar("\nNovo nome"));
+                    pessoa.setIdade(stoi(informar("Nova idade")));
+                    pessoa.setEndereco(informar("Novo endereco"));
+                    contato.setPessoa(pessoa);
+                    contato.setEmail(informar("Novo email"));
+                    contato.setWhatsapp(informar("Novo whatsapp"));
+                    contato.setDiscord(informar("Novo discord"));
+                }
+            }
+            if (!found) {
+                cout << "Nenhum registro encontrado." << endl;
+            }
+        }
+
+        void gravarArquivo() {
+            saveFile();
+        }
+
+        string informar(string variavel) {
+            string elem;
+            cout << variavel + ": ";
+            cin >> elem;
+            return elem;
         }
 
         void listarContatos() {
@@ -35,34 +83,15 @@ class Agenda {
             cout << buffer << endl;
         }
 
-        void gravarArquivo() {
-            saveFile();
-        }
-
-        void buscarContato(string regex) {
-            bool found = false;
-            for(auto contato : agenda) {
-                if (toLowerCase(contato.getPessoa().getNome()).find(toLowerCase(regex)) != string::npos) {
-                    print(contato);
-                    found = true;
-                }
-            }
-            
-        }
-
         void removerContato(string whatsapp) {
             bool found = false;
-            Contato wanted;
-            for (auto elemento : agenda) {
-                if (!found && (elemento.getWhatsapp().compare(whatsapp) == 0)) {
-                    wanted = elemento;
+            for (vector<Contato>::iterator it = agenda.begin(); it != agenda.end(); ++it) {
+                if (!found && it->getWhatsapp() == whatsapp) {
+                    agenda.erase(it);
                     found = true;
                 }
             }
-            if (found) {
-                // agenda.erase(std::remove(agenda.begin(),agenda.end(),*pointer),agenda.end());
-            }
-            else {
+            if (!found) {
                 cout << "Nenhum registro encontrado." << endl;
             }
         }
