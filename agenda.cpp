@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Agenda{
+class Agenda {
 
 private:
     Contato contato[MAX];

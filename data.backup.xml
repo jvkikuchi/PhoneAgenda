@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agenda>
+    <registro>
+        <nome>Andre Bernardes de Carvalho</nome>
+        <idade>35</idade>
+        <endereco>Av. Almirante Barroso, 1234 - BL2 - Ap. 101</endereco>
+        <email>andre.carvalho@hotmail.com</email>
+        <whatsapp>9876504321</whatsapp>
+        <discord>AndreCarvalho#1234</discord>
+    </registro>
+    <registro>
+        <nome>Daniela Elise Fagundes Guimaraes</nome>
+        <idade>27</idade>
+        <endereco>Rod. Mario Covas, 567</endereco>
+        <email>dani.fagundes@yahoo.com.br</email>
+        <whatsapp>999877665</whatsapp>
+        <discord>nao possui</discord>
+    </registro>
+    <registro>
+        <nome>Hugo Inacio de Jesus</nome>
+        <idade>29</idade>
+        <endereco>Trav. Vileta, 2012 - Ap. 303</endereco>
+        <email>overpower92@gmail.com</email>
+        <whatsapp>992053846</whatsapp>
+        <discord>OverPower#7185</discord>
+    </registro>
+</agenda>

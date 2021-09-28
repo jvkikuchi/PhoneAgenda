@@ -73,7 +73,6 @@ public:
         return true;
     }
     
-
     string toString(){
         return pessoa.getNome() + " " + whatsapp;
     }
